@@ -2,6 +2,9 @@
 
 import random
 
+user = input("Welcome Player! What is your name? ")
+print(f"Hi {user}, It's time to try your guessing skills ")
+
 game = "Random Guess Game "
 print(game.upper())
 
@@ -18,13 +21,13 @@ def random_guess_game():
         now_playing = True
         while now_playing:
             if level_selection == 1:
-                print("Game level: Easy Mode")
+                print("Game level: Easy Mode Selected. You have 6 chances ")
                 break
             if level_selection == 2:
-                print("Game level: Medium Mode")
+                print("Game level: Medium Mode Selected. You have 4 chances")
                 break
             if level_selection == 3:
-                print("Game level: Hard Mode")
+                print("Game level: Hard Mode Selected. You have 3 chances")
                 break
             else:
                 print("Invalid selection! Please enter 1, 2, or 3")
@@ -38,6 +41,7 @@ def random_guess_game():
                     guess = int(user_input)
                 except ValueError:
                     print("Error! Please enter only numbers. Try again! ")
+                    continue
                 guess_count += 1
                 chances = guess_limit - guess_count
                 if guess == hidden_easy:
@@ -58,6 +62,7 @@ def random_guess_game():
                     guess = int(user_input)
                 except ValueError:
                     print("Error! Please enter only numbers. Try again! ")
+                    continue
                 guess_count += 1
                 chances = guess_limit - guess_count
                 if guess == hidden_medium:
@@ -77,6 +82,7 @@ def random_guess_game():
                     guess = int(user_input)
                 except ValueError:
                     print("Error! Please enter only numbers. Try again! ")
+                    continue
                 guess_count += 1
                 chances = guess_limit - guess_count
                 if guess == hidden_hard:
