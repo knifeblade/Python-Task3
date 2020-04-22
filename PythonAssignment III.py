@@ -3,10 +3,7 @@
 import random
 
 user = input("Welcome Player! What is your name? ")
-print(f"Hi {user}, It's time to try your guessing skills ")
-
-game = "Random Guess Game "
-print(game.upper())
+print(f"Hi {user}, It's time to try your guessing skills! ")
 
 
 def random_guess_game():
@@ -16,40 +13,46 @@ def random_guess_game():
         hidden_easy = random.randint(1, 10)
         hidden_medium = random.randint(1, 20)
         hidden_hard = random.randint(1, 50)
-        level_selection = int(input("Select Game Level: \nEnter '1' for Easy; Enter '2' for Medium; Enter '3' for Hard\n "))
-
+        level_select = input("Game Level: \nEnter '1' for Easy; Enter '2' for Medium; Enter '3' for Hard\n ")
+        try:
+            level_selection = int(level_select)
+        except ValueError:
+            print("Error! Please enter '1', '2' or '3'. ")
+            continue
+            
         now_playing = True
         while now_playing:
             if level_selection == 1:
-                print("Game level: Easy Mode Selected. You have 6 chances ")
+                print("Game level: Easy Mode Selected. You have 6 chances. ")
                 break
             if level_selection == 2:
-                print("Game level: Medium Mode Selected. You have 4 chances")
+                print("Game level: Medium Mode Selected. You have 4 chances. ")
                 break
             if level_selection == 3:
-                print("Game level: Hard Mode Selected. You have 3 chances")
+                print("Game level: Hard Mode Selected. You have 3 chances. ")
                 break
             else:
-                print("Invalid selection! Please enter 1, 2, or 3")
+                print("Invalid selection! Try again! ")
                 now_playing = not True
         if level_selection == 1:
             guess_count = 0
             guess_limit = 6
             while guess_count < guess_limit:
-                user_input = input("Guess a number between 1 and 10: ")
+                user_input = input("\nGuess a number between 1 and 10: ")
+                guess_count += 1
+                chances = guess_limit - guess_count
                 try:
                     guess = int(user_input)
                 except ValueError:
-                    print("Error! Please enter only numbers. Try again! ")
+                    print(f"Error! Please enter only numbers. You have {chances} chance(s) left. ")
                     continue
-                guess_count += 1
-                chances = guess_limit - guess_count
                 if guess == hidden_easy:
                     print("You got it right! ")
-                    start_game = not True
                     break
+                if guess > 10:
+                    print(f"Your guess is not within the specified range! You have {chances} chance(s) left. ")
                 else:
-                    print(f"That was wrong! You have only {chances} chances left ")
+                    print(f"That was wrong! You have {chances} chance(s) left. ")
             else:
                 if guess_count >= guess_limit:
                     print("Game Over!")
@@ -57,19 +60,21 @@ def random_guess_game():
             guess_count = 0
             guess_limit = 4
             while guess_count < guess_limit:
-                user_input = input("Guess a number between 1 and 20: ")
+                user_input = input("\nGuess a number between 1 and 20: ")
+                guess_count += 1
+                chances = guess_limit - guess_count
                 try:
                     guess = int(user_input)
                 except ValueError:
-                    print("Error! Please enter only numbers. Try again! ")
+                    print(f"Error! Please enter only numbers. You have {chances} chance(s) left. ")
                     continue
-                guess_count += 1
-                chances = guess_limit - guess_count
                 if guess == hidden_medium:
                     print("You got it right! ")
                     break
+                if guess > 20:
+                    print(f"Your guess is not within the specified range! You have {chances} chance(s) left. ")
                 else:
-                    print(f"That was wrong! You have only {chances} chances left ")
+                    print(f"That was wrong! You have {chances} chance(s) left. ")
             else:
                 if guess_count >= guess_limit:
                     print("Game Over!")
@@ -77,19 +82,21 @@ def random_guess_game():
             guess_count = 0
             guess_limit = 3
             while guess_count < guess_limit:
-                user_input = input("Guess a number between 1 and 50: ")
+                user_input = input("\nGuess a number between 1 and 50: ")
+                guess_count += 1
+                chances = guess_limit - guess_count
                 try:
                     guess = int(user_input)
                 except ValueError:
-                    print("Error! Please enter only numbers. Try again! ")
+                    print(f"Error! Please enter only numbers. You have {chances} chance(s) left. ")
                     continue
-                guess_count += 1
-                chances = guess_limit - guess_count
                 if guess == hidden_hard:
                     print("You got it right! ")
                     break
+                if guess > 50:
+                    print(f"Your guess is not within the specified range! You have {chances} chance(s) left. ")
                 else:
-                    print(f"That was wrong! You have only {chances} chances left ")
+                    print(f"That was wrong! You have {chances} chance(s) left. ")
             else:
                 if guess_count >= guess_limit:
                     print("Game Over!")
@@ -105,7 +112,7 @@ def random_guess_game():
                 play_again = not True
                 start_game = True
             else:
-                print("Invalid selection. Please enter Y or N ")
+                print("Bye! ")
                 play_again = not True
                 start_game = not True
 
