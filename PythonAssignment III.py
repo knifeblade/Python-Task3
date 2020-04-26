@@ -47,7 +47,7 @@ def random_guess_game():
                     print(f"Error! Please enter only numbers. You have {chances} chance(s) left. ")
                     continue
                 if guess == hidden_easy:
-                    print("You got it right! ")
+                    print(f"You got it right! You made the correct guess in {guess_count} attempt(s). ")
                     break
                 if guess > 10:
                     print(f"Your guess is not within the specified range! You have {chances} chance(s) left. ")
@@ -55,7 +55,7 @@ def random_guess_game():
                     print(f"That was wrong! You have {chances} chance(s) left. ")
             else:
                 if guess_count >= guess_limit:
-                    print("Game Over!")
+                    print(f"Game Over! Sorry, the number in memory was {hidden_easy}.")
         elif level_selection == 2:
             guess_count = 0
             guess_limit = 4
@@ -69,7 +69,7 @@ def random_guess_game():
                     print(f"Error! Please enter only numbers. You have {chances} chance(s) left. ")
                     continue
                 if guess == hidden_medium:
-                    print("You got it right! ")
+                    print(f"You got it right! You made the correct guess in {guess_count} attempt(s). ")
                     break
                 if guess > 20:
                     print(f"Your guess is not within the specified range! You have {chances} chance(s) left. ")
@@ -77,7 +77,7 @@ def random_guess_game():
                     print(f"That was wrong! You have {chances} chance(s) left. ")
             else:
                 if guess_count >= guess_limit:
-                    print("Game Over!")
+                    print(f"Game Over! Sorry, the number in memory was {hidden_medium}.")
         elif level_selection == 3:
             guess_count = 0
             guess_limit = 3
@@ -91,7 +91,7 @@ def random_guess_game():
                     print(f"Error! Please enter only numbers. You have {chances} chance(s) left. ")
                     continue
                 if guess == hidden_hard:
-                    print("You got it right! ")
+                    print(f"You got it right! You made the correct guess in {guess_count} attempt(s). ")
                     break
                 if guess > 50:
                     print(f"Your guess is not within the specified range! You have {chances} chance(s) left. ")
@@ -99,7 +99,7 @@ def random_guess_game():
                     print(f"That was wrong! You have {chances} chance(s) left. ")
             else:
                 if guess_count >= guess_limit:
-                    print("Game Over!")
+                    print(f"Game Over! Sorry, the number in memory was {hidden_hard}.")
         play_again = True
         while play_again:
             replay = input("\nWould you like to play again?\nY or N\n ")
